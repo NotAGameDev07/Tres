@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE deck [
+	<!ENTITY tcode 'self.douac[self.nextplayer] += Hand(self.deck, 17)'>
+	<!ENTITY ccarde '<ccard id="CC">&tcode;</ccard>'>
+	<!ENTITY defcards '
+		<card id="1"/>
+		<card id="2"/>
+		<card id="3"/>
+		<card id="4"/>
+		<card id="5"/>
+		<card id="6"/>
+		<card id="7"/>
+		<card id="8"/>
+		<card id="9"/>
+		<card id="0"/>
+		<scard id="SK" skamt="2"/>
+		<scard id="SK" skamt="3"/>
+		<scard id="SK" skamt="3"/>
+		<scard id="SK" skamt="3"/>
+		<scard id="SK" skamt="2"/>
+		<scard id="SK" skamt="3"/>
+		<scard id="SK" skamt="3"/>
+		<scard id="SK" skamt="1"/>
+		<scard id="RV" isskip="skip"/>
+		<scard id="D2" draw="2"/>
+		<scard id="D2" draw="2"/>
+		<scard id="D2" draw="5"/>
+		<scard id="D2" draw="15"/>
+		<scard id="D2" draw="1000"/>
+		<scard id="D2" draw="5"/>
+		<scard id="D2" draw="7"/>
+		&ccarde;
+		&ccarde;
+		&ccarde;
+		&ccarde;
+	'>
+]>
+<deck>
+	<color id="R" name="Red">
+		<!--
+		<card id="1"/>
+		<card id="2"/>
+		<card id="3"/>
+		<card id="4"/>
+		<card id="5"/>
+		<card id="6"/>
+		<card id="7"/>
+		<card id="8"/>
+		<card id="9"/>
+		<card id="0"/>
+		<scard id="SK" type="reverse"/>
+		<scard id="RV" type="skip"/>
+		<scard id="D2" type="draw" amount="2"/>
+		-->
+		&defcards;
+	</color>
+	<color id="G" name="Green">
+		&defcards;
+	</color>
+	<color id="B" name="Blue">
+		&defcards;
+	</color>
+	<color id="Y" name="Yellow">
+		&defcards;
+	</color>
+</deck>
