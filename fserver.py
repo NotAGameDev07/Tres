@@ -1,7 +1,7 @@
 import threading
 import time
 
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -25,6 +25,10 @@ def stop():
 	global times
 	times['flag'] = True
 	return '<h1>STOPPED</h1>'
+
+@app.route('/dynup')
+def dynup():
+	return render_template('index.html')
 
 x = threading.Thread(target=cthread)
 x.start()

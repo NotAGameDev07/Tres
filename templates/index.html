@@ -1,7 +1,15 @@
-<p>Cards: {{ inp }} ::</p>
-<p>Current Card: {{ cc }} ::</p>
-<p>Opponent(s) card count: {{ oc }} ::</p>
-<form method="POST">
-	<input name="text">
-	<input type="submit">
-</form>
+<!DOCTYPE html>
+<html>
+  <h1 id="BOB">some text</h1>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    var timeds = setInterval(() => {
+      var d = new Date();
+      document.getElementById("BOB").innerText = d.getTime();
+    }, 1);
+  </script>
+  <form method="POST">
+    <input name="text" />
+    <input type="submit" />
+  </form>
+</html>
