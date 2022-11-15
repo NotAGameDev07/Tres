@@ -1,5 +1,6 @@
 import random
 
+
 class Card:
 	#default card class
 	def __init__(self, color, ID, iswild=False):
