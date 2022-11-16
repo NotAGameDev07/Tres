@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE deck [
-	<!ENTITY tcode 'self.douac[self.nextplayer] += Hand(self.deck, 17)'>
-	<!ENTITY ccarde '<ccard id="CC">&tcode;</ccard>'>
+	<!ENTITY sscode 'self.douac[self.nextplayer] += Hand(self.deck, 17)'>
+	<!ENTITY cscode 'print(&#39;spooky&#39;)'>
+	<!ENTITY ccarde '<ccard id="CC" ssc="&sscode;" csc="&cscode;"></ccard>'>
 	<!ENTITY defcards '
 		<card id="1"/>
 		<card id="2"/>

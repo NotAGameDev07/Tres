@@ -27,15 +27,20 @@ class SCard(Card):
 	def __str__(self):
 		return f'({self.color}, {self.id}, {self.draw}, {self.skamt})'
 	__repr__ = __str__
+	def todict(self):
+		return {'draw': self.draw, 'skamt': self.skamt, 'isskip': self.isskip, 'color': self.color, 'id': self.id, 'iswild': self.iswild}
 
 class CCard(Card):
 	#custom card class
-	def __init__(self, color, ID, code='', iswild=False):
+	def __init__(self, color, ID, code='', cscode='', iswild=False):
 		#inits default attributes
 		super().__init__(color, ID, iswild)
 		#inits code attr
 		#code gets executed when card is played
 		self.code = code
+		self.cscode = cscode
+	def todict(self):
+		return {'cscode': self.cscode, 'code': self.code, 'color': self.color, 'id': self.id, 'iswild': self.iswild}
 
 class Hand:
 	def __init__(self, deck, cards = 7):
@@ -50,26 +55,28 @@ class Hand:
 class UNO:
 	def __init__(self, users, deck):
 		#inits game
-		self.users = users
+		self.players = users
 		self.deck = deck
 		self.douac = {i: Hand(deck).gen() for i in users}
 		self.ccard = Hand(deck, 1).gen()[0]
 		self.discard = []
 		self.skamt = 0
-		self.cpl = list(self.douac)
+	def addplayer(self, player):
+		self.douac[player] = Hand(self.deck).gen()[0]
+		self.players += [player]
 	def __iter__(self):
 		#returns info of current game except deck
 		yield self.users
 		yield self.douac
 		yield self.ccard
+	def reverse(self):
+		self.players = self.players[::-1]
 	#plays round, there is player id and index of card
 	def round(self, player, ind, color=''):
-		self.nextplayer = self.cpl[(self.cpl.index(player) + 1) % len(self.cpl)]
-		print(self.nextplayer, player)
-		print("SKAMT:", self.skamt)
+		self.nextplayer = self.players[(self.players.index(player) + 1) % len(self.players)]
 		if self.skamt > 0:
 			self.skamt -= 1
-			return None
+			return self.nextplayer
 		pcard = self.douac[player][ind]
 		if pcard.iswild and type(pcard) == CCard:
 			#Executes code and discards card when card matches

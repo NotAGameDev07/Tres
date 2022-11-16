@@ -1,7 +1,9 @@
 import xml.etree.ElementTree as ET
+
+from flask import Flask
+
 import deck as cards
 
-from flask import Flask, request, render_template
 app = Flask(__name__)
 
 # Opens "cards.xml" and parses data to generate cards and puts them in an array named deck
@@ -16,7 +18,7 @@ for i in root:
 			if j.tag == 'card':
 				deck += [cards.Card(prefix, j.attrib['id'])]
 			if j.tag == 'ccard':
-				deck += [cards.CCard(prefix, j.attrib['id'], j.text.strip())]
+				deck += [cards.CCard(prefix, j.attrib['id'], j.attrib['ssc'].strip(), j.attrib['csc'].strip())]
 			if j.tag == 'scard':
 				deck += [cards.SCard(prefix, j.attrib['id'], None, j.attrib.get('draw', 0), j.attrib.get('skamt', 0), j.attrib.get('iswild', False))]
 

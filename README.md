@@ -34,7 +34,7 @@ Then add any of the following tags, they are described as follows
 
 ---
 
-> `<ccard id="X">` defines a card with custom actions, the code to define custom actions is written in python with X being the id of the card
+> `<ccard id="X" ssc="Y" csc="Z">` defines a card with custom actions, the code to define custom actions is written in python with X being the id of the card, Y being the code ran on the server side, and Z being the code run on the client side, all attributes are required
 
 ---
 
@@ -57,9 +57,6 @@ Then add any of the following tags, they are described as follows
 		<scard id="SK" type="reverse"/>
 		<scard id="RV" type="skip"/>
 		<scard id="D2" type="draw" amount="2"/>
-		<ccard id="CC">
-			&tcode;
-		</ccard>
 	'>
 ]>
 <deck>
@@ -229,13 +226,14 @@ Then add any of the following tags, they are described as follows
 
 > `self.deck` is a list of cards that is being used by the current UNO game
 
-> `self.users` is a list of all current users
+> `self.players` is a list of all current players
 
 > `self.ccard` is the current card
 
 > `self.discard` is the list of cards that have been played from first to last, aka a discord pile
 
 > `self.skamt` is the amount of consecutive skips to be done, this is normally `1` for vanilla UNO skips, but can be higher, for example `2` will skip the turn for the next player and the turn for the player after that, so the person that plays a custom skip card can be skipped by said card if `self.skamt` is large enough
+> `self.reverse()` is the function to call that will reverse the order of the players
 
 ## Other variables
 
