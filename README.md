@@ -92,9 +92,6 @@ Then add any of the following tags, they are described as follows
 		<scard id="SK" type="reverse"/>
 		<scard id="RV" type="skip"/>
 		<scard id="D2" type="draw" amount="2"/>
-		<ccard id="CC">
-			&tcode;
-		</ccard>
 	</color>
 	<color id="G" name="Red">
 		<card id="1"/>
@@ -110,9 +107,6 @@ Then add any of the following tags, they are described as follows
 		<scard id="SK" type="reverse"/>
 		<scard id="RV" type="skip"/>
 		<scard id="D2" type="draw" amount="2"/>
-		<ccard id="CC">
-			&tcode;
-		</ccard>
 	</color>
 	<color id="B" name="Red">
 		<card id="1"/>
@@ -128,9 +122,6 @@ Then add any of the following tags, they are described as follows
 		<scard id="SK" type="reverse"/>
 		<scard id="RV" type="skip"/>
 		<scard id="D2" type="draw" amount="2"/>
-		<ccard id="CC">
-			&tcode;
-		</ccard>
 	</color>
 	<color id="Y" name="Red">
 		<card id="1"/>
@@ -146,9 +137,6 @@ Then add any of the following tags, they are described as follows
 		<scard id="SK" type="reverse"/>
 		<scard id="RV" type="skip"/>
 		<scard id="D2" type="draw" amount="2"/>
-		<ccard id="CC">
-			&tcode;
-		</ccard>
 	</color>
 </deck>
 ```
@@ -160,7 +148,8 @@ Then add any of the following tags, they are described as follows
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE deck [
-	<!ENTITY defcode "your code here">
+	<!ENTITY sscode "your code here">
+	<!ENTITY cscode "your code here">
 	<!ENTITY defcards '
 		<card id="1"/>
 		<card id="2"/>
@@ -175,9 +164,7 @@ Then add any of the following tags, they are described as follows
 		<scard id="SK" type="reverse" skamt="6"/>
 		<scard id="RV" type="skip"/>
 		<scard id="D2" type="draw" amount="2"/>
-		<ccard id="CC">
-			&tcode;
-		</ccard>
+		<ccard id="CC" ssc="&sscode;" csc="&cscode;"></ccard>
 	'>
 ]>
 <deck>
