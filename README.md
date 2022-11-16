@@ -185,29 +185,7 @@ Then add any of the following tags, they are described as follows
 </deck>
 ```
 
-## Variables accessible to custom card code
-
-> self
-
-> player
-
-> ind
-
-### Attributes of self accessible to custom card code
-
-> self.users
-
-> self.deck
-
-> self.ucda
-
-> self.ccard
-
-> self.discard
-
-> self.dcc
-
-# More Variable Documentation
+# Variable Documentation
 
 ## self
 
