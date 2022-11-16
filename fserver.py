@@ -1,11 +1,13 @@
 import threading
 import time
 
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
 times = {}
+
+a = []
 
 times['time'] = time.time()
 times['flag'] = False
@@ -19,6 +21,16 @@ def cthread():
 @app.route('/')
 def index():
 	return '<h1>{m}</h1>'.format(m=times['time']);
+
+@app.route('/json')
+def jsonned():
+	global a
+	return jsonify({'this': a})
+
+@app.route('/json/<val>')
+def jsonner(val):
+	global a
+	a += [val]
 
 @app.route('/exit')
 def stop():
