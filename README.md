@@ -220,6 +220,7 @@ Then add any of the following tags, they are described as follows
 > `self.discard` is the list of cards that have been played from first to last, aka a discord pile
 
 > `self.skamt` is the amount of consecutive skips to be done, this is normally `1` for vanilla UNO skips, but can be higher, for example `2` will skip the turn for the next player and the turn for the player after that, so the person that plays a custom skip card can be skipped by said card if `self.skamt` is large enough
+
 > `self.reverse()` is the function to call that will reverse the order of the players
 
 ## Other variables
