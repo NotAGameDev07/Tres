@@ -1,6 +1,8 @@
-# How to currently run the application
+# TRES, because UNO and DOS was taken
 
-## NOTE: This is currently CLI only, multiplayer is not yet supported
+## How to currently run the application
+
+### NOTE: This is currently CLI only, multiplayer is not yet supported
 
 #### This is if the `python3` binary is ran when the `python` command is ran in the terminal
 
