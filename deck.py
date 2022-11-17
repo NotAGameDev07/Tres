@@ -14,6 +14,8 @@ class Card:
 	def __str__(self):
 		return f"({self.color}, {self.id})"
 	__repr__ = __str__
+	def todict(self):
+		return {'type': 'Card', "color": self.color, "id": self.id, "iswild": self.iswild}
 
 class SCard(Card):
 	#custom card class
@@ -28,19 +30,20 @@ class SCard(Card):
 		return f'({self.color}, {self.id}, {self.draw}, {self.skamt})'
 	__repr__ = __str__
 	def todict(self):
-		return {'draw': self.draw, 'skamt': self.skamt, 'isskip': self.isskip, 'color': self.color, 'id': self.id, 'iswild': self.iswild}
+		return {'type': 'SCard', 'draw': self.draw, 'skamt': self.skamt, 'isskip': self.isskip, 'color': self.color, 'id': self.id, 'iswild': self.iswild}
 
 class CCard(Card):
 	#custom card class
-	def __init__(self, color, ID, code='', cscode='', iswild=False):
+	def __init__(self, color, ID, code='', cscode='', description='', iswild=False):
 		#inits default attributes
 		super().__init__(color, ID, iswild)
 		#inits code attr
 		#code gets executed when card is played
 		self.code = code
 		self.cscode = cscode
+		self.description = description
 	def todict(self):
-		return {'cscode': self.cscode, 'code': self.code, 'color': self.color, 'id': self.id, 'iswild': self.iswild}
+		return {'type': 'CCard', 'description': self.description, 'cscode': self.cscode, 'code': self.code, 'color': self.color, 'id': self.id, 'iswild': self.iswild}
 
 class Hand:
 	def __init__(self, deck, cards = 7):
@@ -57,7 +60,10 @@ class UNO:
 		#inits game
 		self.players = users
 		self.deck = deck
-		self.douac = {i: Hand(deck).gen() for i in users}
+		if users != []:
+			self.douac = {i: Hand(deck).gen() for i in users}
+		else:
+			self.douac = {}
 		self.ccard = Hand(deck, 1).gen()[0]
 		self.discard = []
 		self.skamt = 0

@@ -3,6 +3,11 @@ import time
 
 from flask import Flask, jsonify, render_template
 
+from deck import UNO
+from uno import deck
+
+g = UNO([], deck)
+
 app = Flask(__name__)
 
 times = {}
@@ -20,7 +25,7 @@ def cthread():
 
 @app.route('/')
 def index():
-	return '<h1>{m}</h1>'.format(m=times['time']);
+	return '<h1>STARTED</h1>';
 
 @app.route('/json')
 def jsonned():

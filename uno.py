@@ -18,18 +18,19 @@ for i in root:
 			if j.tag == 'card':
 				deck += [cards.Card(prefix, j.attrib['id'])]
 			if j.tag == 'ccard':
-				deck += [cards.CCard(prefix, j.attrib['id'], j.attrib['ssc'].strip(), j.attrib['csc'].strip())]
+				deck += [cards.CCard(prefix, j.attrib['id'], j.attrib['ssc'].strip(), j.attrib['csc'].strip(), j.text.strip())]
 			if j.tag == 'scard':
 				deck += [cards.SCard(prefix, j.attrib['id'], None, j.attrib.get('draw', 0), j.attrib.get('skamt', 0), j.attrib.get('iswild', False))]
 
-# inits game with player array and deck array
-# TODO make working multiplayer
-f = cards.UNO(['a', 'b'], deck)
+if __name__ == '__main__':
+	# inits game with player array and deck array
+	# TODO make working multiplayer
+	f = cards.UNO(['a', 'b'], deck)
 
-while len(f.douac['a']) > 0 and len(f.douac['b']) > 0:
-	print(f.ccard, f.douac['a'])
-	play = int(input('a: please slect cardddd'))
-	f.round('a', play)
-	print(f.ccard, f.douac['b'])
-	play = int(input('b: please slect cardddd'))
-	f.round('b', play)
+	while len(f.douac['a']) > 0 and len(f.douac['b']) > 0:
+		print(f.ccard, f.douac['a'])
+		play = int(input('a: please slect cardddd'))
+		f.round('a', play)
+		print(f.ccard, f.douac['b'])
+		play = int(input('b: please slect cardddd'))
+		f.round('b', play)

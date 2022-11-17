@@ -24,19 +24,19 @@ Make a new XML file with deck as root tag
 
 Then add any of the following tags, they are described as follows
 
-> `<color id="X" name="Y">` defines a color in which you can put the following XML tags inside, X is the id of the color and Y is the name of the color, but the name of the color isn't used to compare if a card is playable or not while the id of the color is
+> `<color id="X" name="Y"/>` defines a color in which you can put the following XML tags inside, X is the id of the color and Y is the name of the color, but the name of the color isn't used to compare if a card is playable or not while the id of the color is
 
 ---
 
-> `<card> id="X"` defines a card with no actions/custom actions with X being the id of the card
+> `<card id="X"/>` defines a card with no actions/custom actions with X being the id of the card
 
 ---
 
-> `<scard id="X" type="Y">` defines a card with special actions but no custom actions, such as skip, draw, reverse, wild draw, and wild with X being the id of the card, and with Y being the type of action the card performs
+> `<scard id="X" type="Y"/>` defines a card with special actions but no custom actions, such as skip, draw, reverse, wild draw, and wild with X being the id of the card, and with Y being the type of action the card performs
 
 ---
 
-> `<ccard id="X" ssc="Y" csc="Z">` defines a card with custom actions, the code to define custom actions is written in python with X being the id of the card, Y being the code ran on the server side, and Z being the code run on the client side, all attributes are required
+> `<ccard id="X" ssc="Y" csc="Z">OPTIONAL</ccard>` defines a card with custom actions, the code to define custom actions is written in python with X being the id of the card, Y being the code ran on the server side, and Z being the code run on the client side, all attributes are required, inner text is optional as it is the card's description
 
 ---
 
@@ -166,7 +166,7 @@ Then add any of the following tags, they are described as follows
 		<scard id="SK" type="reverse" skamt="6"/>
 		<scard id="RV" type="skip"/>
 		<scard id="D2" type="draw" amount="2"/>
-		<ccard id="CC" ssc="&sscode;" csc="&cscode;"></ccard>
+		<ccard id="CC" ssc="&sscode;" csc="&cscode;">OPTIONAL TEXT</ccard>
 	'>
 ]>
 <deck>
